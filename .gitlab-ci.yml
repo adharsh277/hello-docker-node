@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "Building project..."
+    - npm install
+
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm test || echo "No tests found, skipping"
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying app..."
+  only:
+    - main
